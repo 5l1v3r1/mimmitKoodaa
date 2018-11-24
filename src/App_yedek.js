@@ -17,10 +17,7 @@ class App extends Component {
 
   addSooMuchLiked = () => {
     this.setState(function(state) {
-      let indexOf = this.state.likedTooMuch.indexOf(state.indexOfCurrentCat);
-      if ( indexOf === -1 ) {
-        this.state.likedTooMuch.push(state.indexOfCurrentCat);
-      }
+      this.state.likedTooMuch.push(state.indexOfCurrentCat);
       const newIndex = state.indexOfCurrentCat + 1;
       if (newIndex < this.state.catPictures.length) {
         return { indexOfCurrentCat: newIndex };
@@ -31,10 +28,7 @@ class App extends Component {
 
   addLiked = () => {
     this.setState(function(state) {
-      let indexOf = this.state.liked.indexOf(state.indexOfCurrentCat);
-      if ( indexOf === -1 ) {
-        this.state.liked.push(state.indexOfCurrentCat);
-      }
+      this.state.liked.push(state.indexOfCurrentCat);
       const newIndex = state.indexOfCurrentCat + 1;
       if (newIndex < this.state.catPictures.length) {
         return { indexOfCurrentCat: newIndex };
@@ -47,6 +41,7 @@ class App extends Component {
     this.setState(function(state) {
       return { contentType: "liked" };
     });
+    console.log(this.state.liked);
   }
 
   showSooMuchLiked = () => {
@@ -77,7 +72,7 @@ class App extends Component {
         <div className="App">
           {this.state.liked.map(like => {
             return (
-              <div key={like} >
+              <div>
                 <img src={this.state.catPictures[like]} alt="logo" />
               </div>
             );
@@ -89,7 +84,7 @@ class App extends Component {
         <div className="App">
           {this.state.likedTooMuch.map(like => {
             return (
-              <div key={like} >
+              <div>
                 <img src={this.state.catPictures[like]} alt="logo" />
               </div>
             );
@@ -105,10 +100,10 @@ class App extends Component {
         <header className="App-header">
           {this.createContent()}
           <div>
-            <button onClick={this.showLiked}>All liked cats</button>
-            <button onClick={this.showSooMuchLiked}>All soooo cute cats</button>
-            <button onClick={this.showMainPage}>Main Page</button>
-          </div>
+          <button onClick={this.showLiked}>All liked cats</button>
+          <button onClick={this.showSooMuchLiked}>All soooo cute cats</button>
+          <button onClick={this.showMainPage}>Main Page</button>
+        </div>
         </header>
       </div>
     );
